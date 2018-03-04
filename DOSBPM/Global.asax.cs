@@ -12,6 +12,7 @@ namespace DOSBPM
     {
         protected void Application_Start()
         {
+            //Test git
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
