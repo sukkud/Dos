@@ -1,0 +1,262 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DEV_CODES_APPDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="L_Country">
+          <Key>
+            <PropertyRef Name="CountryID" />
+          </Key>
+          <Property Name="CountryID" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="CountryName" Type="varchar" MaxLength="35" Nullable="false" />
+          <Property Name="CountryNameShort" Type="varchar" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="L_County">
+          <Key>
+            <PropertyRef Name="CountyID" />
+          </Key>
+          <Property Name="CountyID" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="CountyName" Type="varchar" MaxLength="35" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="StateID" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="L_State">
+          <Key>
+            <PropertyRef Name="StateID" />
+          </Key>
+          <Property Name="StateID" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="StateName" Type="varchar" MaxLength="35" Nullable="false" />
+          <Property Name="StateNameShort" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="CountryID" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="temp_BPMData">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AppID" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="UserID" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="JsonData" Type="varchar(max)" />
+        </EntityType>
+        <Association Name="FK__L_County__StateI__145C0A3F">
+          <End Role="L_State" Type="Self.L_State" Multiplicity="1" />
+          <End Role="L_County" Type="Self.L_County" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="L_State">
+              <PropertyRef Name="StateID" />
+            </Principal>
+            <Dependent Role="L_County">
+              <PropertyRef Name="StateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__L_County__StateI__15502E78">
+          <End Role="L_State" Type="Self.L_State" Multiplicity="1" />
+          <End Role="L_County" Type="Self.L_County" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="L_State">
+              <PropertyRef Name="StateID" />
+            </Principal>
+            <Dependent Role="L_County">
+              <PropertyRef Name="StateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__L_State__Country__164452B1">
+          <End Role="L_Country" Type="Self.L_Country" Multiplicity="1" />
+          <End Role="L_State" Type="Self.L_State" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="L_Country">
+              <PropertyRef Name="CountryID" />
+            </Principal>
+            <Dependent Role="L_State">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DEV_CODES_APPDBModelStoreContainer">
+          <EntitySet Name="L_Country" EntityType="Self.L_Country" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="L_County" EntityType="Self.L_County" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="L_State" EntityType="Self.L_State" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="temp_BPMData" EntityType="Self.temp_BPMData" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__L_County__StateI__145C0A3F" Association="Self.FK__L_County__StateI__145C0A3F">
+            <End Role="L_State" EntitySet="L_State" />
+            <End Role="L_County" EntitySet="L_County" />
+          </AssociationSet>
+          <AssociationSet Name="FK__L_County__StateI__15502E78" Association="Self.FK__L_County__StateI__15502E78">
+            <End Role="L_State" EntitySet="L_State" />
+            <End Role="L_County" EntitySet="L_County" />
+          </AssociationSet>
+          <AssociationSet Name="FK__L_State__Country__164452B1" Association="Self.FK__L_State__Country__164452B1">
+            <End Role="L_Country" EntitySet="L_Country" />
+            <End Role="L_State" EntitySet="L_State" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DEV_CODES_APPDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DEV_CODES_APPDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="L_Country" EntityType="DEV_CODES_APPDBModel.L_Country" />
+          <EntitySet Name="L_County" EntityType="DEV_CODES_APPDBModel.L_County" />
+          <EntitySet Name="L_State" EntityType="DEV_CODES_APPDBModel.L_State" />
+          <EntitySet Name="temp_BPMData" EntityType="DEV_CODES_APPDBModel.temp_BPMData" />
+          <AssociationSet Name="FK__L_State__Country__164452B1" Association="DEV_CODES_APPDBModel.FK__L_State__Country__164452B1">
+            <End Role="L_Country" EntitySet="L_Country" />
+            <End Role="L_State" EntitySet="L_State" />
+          </AssociationSet>
+          <AssociationSet Name="FK__L_County__StateI__145C0A3F" Association="DEV_CODES_APPDBModel.FK__L_County__StateI__145C0A3F">
+            <End Role="L_State" EntitySet="L_State" />
+            <End Role="L_County" EntitySet="L_County" />
+          </AssociationSet>
+          <AssociationSet Name="FK__L_County__StateI__15502E78" Association="DEV_CODES_APPDBModel.FK__L_County__StateI__15502E78">
+            <End Role="L_State" EntitySet="L_State" />
+            <End Role="L_County" EntitySet="L_County" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="L_Country">
+          <Key>
+            <PropertyRef Name="CountryID" />
+          </Key>
+          <Property Name="CountryID" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CountryName" Type="String" Nullable="false" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Name="CountryNameShort" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="L_State" Relationship="DEV_CODES_APPDBModel.FK__L_State__Country__164452B1" FromRole="L_Country" ToRole="L_State" />
+        </EntityType>
+        <EntityType Name="L_County">
+          <Key>
+            <PropertyRef Name="CountyID" />
+          </Key>
+          <Property Name="CountyID" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CountyName" Type="String" Nullable="false" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="StateID" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="L_State" Relationship="DEV_CODES_APPDBModel.FK__L_County__StateI__145C0A3F" FromRole="L_County" ToRole="L_State" />
+        </EntityType>
+        <EntityType Name="L_State">
+          <Key>
+            <PropertyRef Name="StateID" />
+          </Key>
+          <Property Name="StateID" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="StateName" Type="String" Nullable="false" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Name="StateNameShort" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CountryID" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="L_Country" Relationship="DEV_CODES_APPDBModel.FK__L_State__Country__164452B1" FromRole="L_State" ToRole="L_Country" />
+          <NavigationProperty Name="L_County" Relationship="DEV_CODES_APPDBModel.FK__L_County__StateI__145C0A3F" FromRole="L_State" ToRole="L_County" />
+        </EntityType>
+        <EntityType Name="temp_BPMData">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AppID" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="UserID" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="JsonData" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK__L_State__Country__164452B1">
+          <End Type="DEV_CODES_APPDBModel.L_Country" Role="L_Country" Multiplicity="1" />
+          <End Type="DEV_CODES_APPDBModel.L_State" Role="L_State" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="L_Country">
+              <PropertyRef Name="CountryID" />
+            </Principal>
+            <Dependent Role="L_State">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__L_County__StateI__145C0A3F">
+          <End Type="DEV_CODES_APPDBModel.L_State" Role="L_State" Multiplicity="1" />
+          <End Type="DEV_CODES_APPDBModel.L_County" Role="L_County" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="L_State">
+              <PropertyRef Name="StateID" />
+            </Principal>
+            <Dependent Role="L_County">
+              <PropertyRef Name="StateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__L_County__StateI__15502E78">
+          <End Type="DEV_CODES_APPDBModel.L_State" Role="L_State" Multiplicity="1" />
+          <End Type="DEV_CODES_APPDBModel.L_County" Role="L_County" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="L_State">
+              <PropertyRef Name="StateID" />
+            </Principal>
+            <Dependent Role="L_County">
+              <PropertyRef Name="StateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DEV_CODES_APPDBModelStoreContainer" CdmEntityContainer="DEV_CODES_APPDBEntities">
+          <EntitySetMapping Name="L_Country">
+            <EntityTypeMapping TypeName="DEV_CODES_APPDBModel.L_Country">
+              <MappingFragment StoreEntitySet="L_Country">
+                <ScalarProperty Name="CountryNameShort" ColumnName="CountryNameShort" />
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="L_County">
+            <EntityTypeMapping TypeName="DEV_CODES_APPDBModel.L_County">
+              <MappingFragment StoreEntitySet="L_County">
+                <ScalarProperty Name="StateID" ColumnName="StateID" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CountyName" ColumnName="CountyName" />
+                <ScalarProperty Name="CountyID" ColumnName="CountyID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="L_State">
+            <EntityTypeMapping TypeName="DEV_CODES_APPDBModel.L_State">
+              <MappingFragment StoreEntitySet="L_State">
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="StateNameShort" ColumnName="StateNameShort" />
+                <ScalarProperty Name="StateName" ColumnName="StateName" />
+                <ScalarProperty Name="StateID" ColumnName="StateID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="temp_BPMData">
+            <EntityTypeMapping TypeName="DEV_CODES_APPDBModel.temp_BPMData">
+              <MappingFragment StoreEntitySet="temp_BPMData">
+                <ScalarProperty Name="JsonData" ColumnName="JsonData" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="AppID" ColumnName="AppID" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

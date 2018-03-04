@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c970a489f8214689a6ca1c6d123a6247" Name="Diagram1">
+        <EntityTypeShape EntityType="DEV_CODES_APPDBModel.L_Country" Width="1.5" PointX="0.75" PointY="1.25" />
+        <EntityTypeShape EntityType="DEV_CODES_APPDBModel.L_County" Width="1.5" PointX="5.25" PointY="1" />
+        <EntityTypeShape EntityType="DEV_CODES_APPDBModel.L_State" Width="1.5" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="DEV_CODES_APPDBModel.temp_BPMData" Width="1.5" PointX="0.75" PointY="4.75" />
+        <AssociationConnector Association="DEV_CODES_APPDBModel.FK__L_State__Country__164452B1" />
+        <AssociationConnector Association="DEV_CODES_APPDBModel.FK__L_County__StateI__145C0A3F" />
+        <AssociationConnector Association="DEV_CODES_APPDBModel.FK__L_County__StateI__15502E78" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,22 @@
+﻿@model DOSBPM.Models.Uploads
+
+@{
+    ViewBag.Title = "Uploads";
+}
+
+<h2>Uploads</h2>
+<div>
+    <p>Need to insert uploads page</p><br />
+    <p>Should pull in list of all uploads based on previously entered information</p>
+    <p>Paper application and fee worksheet uploads reqired</p>
+</div>
+<br />
+
+<div class="bottom" style="padding-top: 35em">
+    <div class="col-lg-11">
+        @Html.ActionLink("Previous", "Index", "SafeguardsDuringConstruction", null, new { @class = "NextBtn" })
+    </div>
+    <div class="col-lg-1">
+        @Html.ActionLink("Next", "Index", "Payment", null, new { @class = "NextBtn" })
+    </div>
+</div>
